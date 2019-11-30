@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class GoogleHelloWorld {
+public class WebAutomation {
 	
 	public static void main(String [] args) {
 	
