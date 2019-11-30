@@ -1,11 +1,8 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.awt.*;
 import java.awt.event.InputEvent;
-import java.awt.image.BufferedImage;
 
 class MouseActions {
 	private static Robot robot;
@@ -88,7 +85,7 @@ class MouseActions {
 		
 	}
 	
-	static void moveMouseToMiddleOfWindow (@org.jetbrains.annotations.NotNull WebDriver webDriverWindow) {
+	static void moveMouseToMiddleOfWindow (WebDriver webDriverWindow) {
 		robot = createRobot();
 		Toolbox.printPointerLocation("moveMouseToMiddleOfWindow (before)");
 		

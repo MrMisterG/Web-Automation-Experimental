@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class WebAutomation {
 	
@@ -36,9 +37,9 @@ public class WebAutomation {
 		
 		try {
 			MouseActions.moveMouseToMiddleOfElement(firefoxDriver, someButton);
-			Thread.sleep(9000);
+			Thread.sleep(1000);
 			MouseActions.moveMouseToMiddleOfElement(firefoxDriver, openLayersMap);
-			Thread.sleep(9000);
+			Thread.sleep(1000);
 			MouseActions.moveMouseToMiddleOfElement(firefoxDriver, zoomInButton);
 		} catch (Exception e) {
 			System.out.println("there has been an exception during robot mouse movement");
@@ -50,6 +51,17 @@ public class WebAutomation {
 			ImageIO.write(image, "png", new File("/Users/Stuart/Pictures/ScreenCap.png"));
 		} catch (Exception e) {
 			System.out.println("Exception during BufferedImage stuff: " + e);
+			e.printStackTrace();
+		}
+		
+		MouseActions.leftClick();
+		MouseActions.leftClick();
+		BufferedImage resultImage = ImageCompare.compareImages(firefoxDriver, "/Users/Stuart/IdeaProjects/MyTestsArtifactId/src/main/resources/Screenshot_expected_test2.png");
+		File resultsFile = new File("/Users/Stuart/IdeaProjects/MyTestsArtifactId/src/main/resources/result_image/results_test.png");
+		
+		try {
+			ImageIO.write(resultImage, "png", resultsFile);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
