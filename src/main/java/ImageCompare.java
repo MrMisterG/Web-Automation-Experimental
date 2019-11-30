@@ -4,6 +4,8 @@ import com.github.romankh3.image.comparison.model.Rectangle;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,16 +15,17 @@ import java.util.List;
 
 public class ImageCompare {
 	
+	private static List<Rectangle> excludedAreas = new ArrayList<Rectangle>();
+	
+	static void addExclusionArea(Rectangle rectangle) {
+		excludedAreas.add(rectangle);
+	}
 	
 	static BufferedImage compareImages(WebDriver driver, String pathExpectedImage) {
 		
 		BufferedImage screenCaptureImage;
 		BufferedImage expectedImage;
 		BufferedImage resultImage;
-		
-		List<Rectangle> excludedAreas = new ArrayList<Rectangle>();
-		excludedAreas.add(new Rectangle(0,0,1680,100)); // test values. TODO The goal would be to pass just a WebElement to exclude
-		excludedAreas.add(new Rectangle(0,500,1680,1050));
 		
 		// get the expected image
 		try {

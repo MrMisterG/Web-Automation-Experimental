@@ -3,11 +3,10 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import com.github.romankh3.image.comparison.model.Rectangle;
 public class WebAutomation {
 	
 	public static void main(String [] args) {
@@ -46,17 +45,10 @@ public class WebAutomation {
 			e.printStackTrace();
 		}
 		
-		try {
-			BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-			ImageIO.write(image, "png", new File("/Users/Stuart/Pictures/ScreenCap.png"));
-		} catch (Exception e) {
-			System.out.println("Exception during BufferedImage stuff: " + e);
-			e.printStackTrace();
-		}
+		MouseActions.leftClick();
+		MouseActions.leftClick();
 		
-		MouseActions.leftClick();
-		MouseActions.leftClick();
-		BufferedImage resultImage = ImageCompare.compareImages(firefoxDriver, "/Users/Stuart/IdeaProjects/MyTestsArtifactId/src/main/resources/Screenshot_expected_test2.png");
+		BufferedImage resultImage = ImageCompare.compareImages(firefoxDriver, "/Users/Stuart/IdeaProjects/MyTestsArtifactId/src/main/resources/expected_images/Screenshot_expected_test2.png");
 		File resultsFile = new File("/Users/Stuart/IdeaProjects/MyTestsArtifactId/src/main/resources/result_image/results_test.png");
 		
 		try {
@@ -64,6 +56,12 @@ public class WebAutomation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		ImageCompare.addExclusionArea(Toolbox.getElementPositionRelativeToScreen(firefoxDriver, zoomInButton));
+		// ImageCompare.addExclusionArea(new Rectangle(0,0,1680,100)); // test values. TODO The goal would be to pass just a WebElement to exclude
+		// ImageCompare.addExclusionArea(new Rectangle (0,500,1680,1050));
+		
+		ImageCompare.compareImages(firefoxDriver, "/Users/Stuart/IdeaProjects/MyTestsArtifactId/src/main/resources/expected_images/Screenshot_expected_test2.png");
 		
 		firefoxDriver.close();
 		firefoxDriver.quit();
