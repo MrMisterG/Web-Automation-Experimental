@@ -24,14 +24,14 @@ class Toolbox {
 		
 		Point windowLocation = webDriverWindow.manage().window().getPosition();
 		int windowLocationX = windowLocation.x;
-		int windowLocationY = windowLocation.y; // 22px is the height of the apple menu bar
+		int windowLocationY = windowLocation.y - 22 ; // 22px is the height of the apple menu bar
 		
 		Point elementLocation = webElement.getLocation();
 		int elementWidth = webElement.getSize().width;
 		int elementHeight = webElement.getSize().height;
 		
 		int elementMinX = (int) elementLocation.x + windowLocationX;
-		int elementMinY = (int) elementLocation.y + 75 + windowLocationY; // 75px is the height of the FireFox header title bar
+		int elementMinY = (int) elementLocation.y + windowLocationY; // 75px is the height of the FireFox header title bar
 		int elementMaxX = elementMinX + elementWidth;
 		int elementMaxY = elementMinY + elementHeight;
 		

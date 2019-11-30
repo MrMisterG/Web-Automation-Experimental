@@ -4,8 +4,6 @@ import com.github.romankh3.image.comparison.model.Rectangle;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageCompare {
+class ImageCompare {
 	
 	private static List<Rectangle> excludedAreas = new ArrayList<Rectangle>();
 	
@@ -48,8 +46,7 @@ public class ImageCompare {
 		// compare the images
 		ImageComparison imageComparison = new ImageComparison(expectedImage, screenCaptureImage);
 		imageComparison.setThreshold(10);
-		imageComparison.setRectangleLineWidth(4);
-		imageComparison.setDestination(new File("result_image/result.png"));
+		imageComparison.setRectangleLineWidth(3);
 		imageComparison.setPixelToleranceLevel(0.2);
 		imageComparison.setExcludedAreas(excludedAreas);
 		imageComparison.setDrawExcludedRectangles(true);
