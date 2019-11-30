@@ -22,7 +22,7 @@ class Toolbox {
 	
 	static Rectangle getElementPositionRelativeToScreen (WebDriver webDriverWindow, WebElement webElement) {
 		
-		Point windowLocation = webDriverWindow.manage().window().getPosition();
+		Point windowLocation = webDriverWindow.manage().window().getPosition(); // TODO move this duplicated code block out
 		int windowLocationX = windowLocation.x;
 		int windowLocationY = windowLocation.y - 22 ; // 22px is the height of the apple menu bar
 		

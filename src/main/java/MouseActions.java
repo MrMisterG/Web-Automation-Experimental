@@ -106,7 +106,7 @@ class MouseActions {
 		robot = createRobot();
 		Toolbox.printPointerLocation("moveMouseToMiddleOfElement (before)");
 
-		Point windowLocation = webDriverWindow.manage().window().getPosition();
+		Point windowLocation = webDriverWindow.manage().window().getPosition(); // TODO move this duplicated code block out
 		int windowLocationX = windowLocation.x;
 		int windowLocationY = windowLocation.y; // 22px is the height of the apple menu bar
 

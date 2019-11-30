@@ -2,11 +2,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import com.github.romankh3.image.comparison.model.Rectangle;
 public class WebAutomation {
 	
 	public static void main(String [] args) {
@@ -19,14 +17,6 @@ public class WebAutomation {
 		WebElement someButton = firefoxDriver.findElement(By.id("navbar-logo-container"));
 		WebElement zoomInButton = firefoxDriver.findElement(By.className("ol-zoom-in"));
 		WebElement navBar = firefoxDriver.findElement(By.className("navbar"));
-		
-		/*
-		 Important things:
-		 - window size
-		 - window position?
-		 - map size
-		 - map position
-		 */
 		
 		openLayersMap.getSize();
 		openLayersMap.getRect();
