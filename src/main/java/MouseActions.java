@@ -81,8 +81,6 @@ class MouseActions {
 				}
 		}
 		Toolbox.printPointerLocation("mouseMove (after)");
-		
-		
 	}
 	
 	static void moveMouseToMiddleOfWindow (WebDriver webDriverWindow) {
@@ -100,13 +98,11 @@ class MouseActions {
 		Toolbox.printPointerLocation("moveMouseToMiddleOfWindow (after)");
 	}
 	
-	
-	
 	static void moveMouseToMiddleOfElement (WebDriver webDriverWindow, WebElement webElement) {
 		robot = createRobot();
 		Toolbox.printPointerLocation("moveMouseToMiddleOfElement (before)");
 
-		Point windowLocation = webDriverWindow.manage().window().getPosition(); // TODO move this duplicated code block out
+		Point windowLocation = webDriverWindow.manage().window().getPosition();
 		int windowLocationX = windowLocation.x;
 		int windowLocationY = windowLocation.y; // 22px is the height of the apple menu bar
 
@@ -114,7 +110,7 @@ class MouseActions {
 		int elementWidth = webElement.getSize().width;
 		int elementHeight = webElement.getSize().height;
 		int elementMiddleLocationX = (int) elementWidth / 2 + elementLocation.x + windowLocationX;
-		int elementMiddleLocationY = (int) elementHeight / 2 + elementLocation.y + 75 + windowLocationY;
+		int elementMiddleLocationY = (int) elementHeight / 2 + elementLocation.y + 75 + windowLocationY; // 75px is the height of the FireFox header title bar
 		
 		System.out.println(elementMiddleLocationX + " and " + elementMiddleLocationY);
 

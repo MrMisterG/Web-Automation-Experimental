@@ -45,9 +45,9 @@ class ImageCompare {
 		
 		// compare the images
 		ImageComparison imageComparison = new ImageComparison(expectedImage, screenCaptureImage);
-		imageComparison.setThreshold(10);
-		imageComparison.setRectangleLineWidth(3);
-		imageComparison.setPixelToleranceLevel(0.2);
+		imageComparison.setThreshold(2);
+		imageComparison.setRectangleLineWidth(2);
+		imageComparison.setPixelToleranceLevel(0.1);
 		imageComparison.setExcludedAreas(excludedAreas);
 		imageComparison.setDrawExcludedRectangles(true);
 		
