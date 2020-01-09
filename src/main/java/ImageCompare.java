@@ -31,6 +31,7 @@ class ImageCompare {
             expectedImage = ImageIO.read(file);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Failed to retrieve the expected image");
             expectedImage = null;
         }
 
@@ -40,6 +41,7 @@ class ImageCompare {
             screenCaptureImage = ImageIO.read(screenshotFile);
         } catch (IOException e) {
             screenCaptureImage = null;
+            System.out.println("Failed to take a screen capture of the current screen");
             e.printStackTrace();
         }
 
@@ -54,7 +56,8 @@ class ImageCompare {
         System.out.println(
                 "Image comparison result (MATCH/MISMATCH etc.): " + comparisonResult.getImageComparisonState());
 
-        return comparisonResult.getImageComparisonState() == ImageComparisonState.MISMATCH ? comparisonResult
-                .getResult() : null;
+        return comparisonResult.getImageComparisonState().equals(ImageComparisonState.SIZE_MISMATCH) ?
+                screenCaptureImage :
+                comparisonResult.getResult();
     }
 }

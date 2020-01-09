@@ -1,8 +1,12 @@
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+
 import java.awt.*;
 import java.awt.event.InputEvent;
+import java.time.Duration;
 
 class MouseActions {
 	private static Robot robot;
@@ -123,6 +127,22 @@ class MouseActions {
 
 		robot.delay(50);
 		Toolbox.printPointerLocation("moveMouseToMiddleOfElement (after)");
-
+		
+		
 	}
+	
+	static void moveMouseUsingSelenium (WebDriver webDriver, WebElement element) {
+		Actions moveMouseTo = new Actions(webDriver);
+		moveMouseTo.moveToElement(element)
+		.clickAndHold()
+		.moveToElement(element, 100,100)
+		.release()
+				.pause(Duration.ofSeconds(1))
+				.dragAndDropBy(element, -100, -100)
+		.build()
+		.perform();
+		
+		System.out.println("moved using selenium Actions Builder...");
+	}
+	
 }

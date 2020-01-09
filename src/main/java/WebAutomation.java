@@ -32,6 +32,8 @@ public class WebAutomation {
 			MouseActions.moveMouseToMiddleOfElement(firefoxDriver, openLayersMap);
 			Thread.sleep(1000);
 			MouseActions.moveMouseToMiddleOfElement(firefoxDriver, zoomInButton);
+			Thread.sleep(1000);
+			MouseActions.moveMouseUsingSelenium(firefoxDriver, openLayersMap);
 		} catch (Exception e) {
 			System.out.println("there has been an exception during robot mouse movement");
 			e.printStackTrace();
@@ -49,16 +51,16 @@ public class WebAutomation {
 			ImageCompare.addExclusionArea(Toolbox.getElementRectangle(paragraph));
 		}
 		
-		BufferedImage resultImage = ImageCompare.compareImages(firefoxDriver, "/Users/Stuart/IdeaProjects/Web-Automation-Experimental/src/main/resources/expected_images/Screenshot_expected_test2.png");
-		File resultsFile = new File("/Users/Stuart/IdeaProjects/Web-Automation-Experimental/src/main/resources/result_image/results_test.png");
+		BufferedImage resultImage = ImageCompare.compareImages(firefoxDriver, "/Users/Stuart/IdeaProjects/Web-Automation-Experimental/src/main/resources/expected_images/Screenshot_expected_test3.png");
+		File resultsFile = new File("/Users/Stuart/IdeaProjects/Web-Automation-Experimental/src/main/resources/result_image/Results_image.png");
 		
 		try {
 			ImageIO.write(resultImage, "png", resultsFile);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			firefoxDriver.close();
+			firefoxDriver.quit();
 		}
-		
-		firefoxDriver.close();
-		firefoxDriver.quit();
 	}
 }
